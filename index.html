@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music App uwu</title>
+        <meta charset="utf-8">
+        <link href="style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!--
+            playlist link: 
+            https://youtube.com/playlist?list=PL6e_G__PyKyvKmLkYdfMnbplzMk-s5KGk
+            https://www.youtube.com/embed/videoseries?list=PL6e_G__PyKyvKmLkYdfMnbplzMk-s5KGk&enablejsapi=1&html5=1&autoplay=1
+          -->
+        <div class="player">
+            <div class="details">
+              <!--<div class="now-playing">PLAYING x OF y</div>-->
+              <input type="text" class ="center" id="textBox" placeholder="playlist linkie (press enter)">
+              <iframe id="frame" class ="center" width="560" height="315" src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
+              <!--
+               <div class="track-name">Track Name</div>
+              <div class="track-artist">Track Artist</div>
+              -->
+            </div>
+            <div class="buttons">
+              <div class="prev-track" onclick="prevTrack()"><i class="fa fa-step-backward fa-2x"></i></div>
+              <div class="playpause-track" onclick="playpauseTrack()"><i class="fa fa-play-circle fa-5x"></i></div>
+              <div class="next-track" onclick="nextTrack()"><i class="fa fa-step-forward fa-2x"></i></div>
+            </div>
+            <!--
+            <div class="slider_container">
+              <div class="current-time">00:00</div>
+              <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+              <div class="total-duration">00:00</div>
+            </div>
+            <div class="slider_container">
+              <i class="fa fa-volume-down"></i>
+              <input type="range" min="1" max="100" value="99" class="volume_slider" onchange="setVolume()">
+              <i class="fa fa-volume-up"></i>
+            </div>
+            -->
+            
+          </div>
+
+        <script src="main.js"></script>
+        <script src="https://www.youtube.com/player_api"></script>
+        <script>
+            document.getElementById("textBox")
+                .addEventListener("keyup", function(event) {
+                event.preventDefault();
+                if (event.keyCode == 13) {
+                    setLink();
+                }
+            });
+
+            function setLink(){
+                var id = document.getElementById("textBox").value.split("=").pop();
+                document.getElementById("frame").src = "https://www.youtube.com/embed/videoseries?list=" + id + "&enablejsapi=1&html5=1&autoplay=1";
+                document.getElementById("textBox").value = "";
+               
+            }
+        </script>
+    </body>
+</html>
+
