@@ -30,9 +30,9 @@ function playpauseTrack(){
 }
 
 function previousTrack(){
-    player.previous();
+    player.previousVideo();
 }
 
 function nextTrack(){
-    player.next();
+    player.nextVideo();
 }
